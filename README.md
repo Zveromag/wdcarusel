@@ -43,8 +43,8 @@ infinite : false
 //automatic scrolling mode
 autoplay : false
 
-//automatic scrolling speed mode
-autoplaySpeed : 3000
+//automatic scrolling delay
+autoplayDelay : 3000
 
 //stops the automatic scrolling when you hover
 stopInHover : false

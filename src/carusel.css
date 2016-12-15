@@ -8,7 +8,6 @@
   overflow: hidden;
   padding: 10px 5px;
   position: relative;
-  counter-reset: items;
 }
 .wd-carusel__item {
   float: left;
@@ -21,8 +20,6 @@
   top: 0;
   left: 0;
   padding: 1rem;
-  counter-increment: items;
-  content: counter(items)
 }
 .wd-carusel__item > img {
   display: block;

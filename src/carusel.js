@@ -48,7 +48,7 @@
       arrowRight : arrowRightIcon,
       infinite : false,
       autoplay : false,
-      autoplaySpeed : 3000,
+      autoplayDelay : 3000,
       stopInHover : false,
       containerNav : '',
       responsive : [
@@ -175,7 +175,7 @@
 
         interval = setInterval(function() {
           slideTo('next');
-        }, options.autoplaySpeed);
+        }, options.autoplayDelay);
 
       }
 
