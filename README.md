@@ -27,7 +27,7 @@ $('.wd-carusel').WDCarusel();
 
 ##Options
 
-defaults values
+options and defaults values
 
 ````javaScript
 //sets the padding elements
