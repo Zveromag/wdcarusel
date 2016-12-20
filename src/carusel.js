@@ -88,6 +88,7 @@
       var $wrap;
       var _items;
       var position = 0;
+      var interval = null;
 
       $items.wrapAll('<div class="wd-carusel__wrap"></div>');
       $wrap = $container.find('.wd-carusel__wrap');
@@ -103,8 +104,6 @@
       options.containerNav.append(arrowsTemplate);
       var $arrows = options.containerNav.find('.wd-carusel__nav--icon');
 
-      var interval = null;
-
       if(options.autoplay) {
 
         if(options.stopInHover) {
@@ -119,14 +118,14 @@
         autoplay();
       }
 
-      resize();
-      hasNav();
+      if(itemsCount <= options.items) {
+        $arrows.hide();
+      }
 
-      // Bind events
-      $(window).on('resize.' + PLUGINNAME, resize);
-      $arrows.on('click.' + PLUGINNAME, navigation);
+      responsive();
 
-     function resize() {
+     //bind functions
+     function responsive() {
 
         containerWidth = $container.width();
 
@@ -143,7 +142,7 @@
       }
 
       function dimensions() {
-        containerWidth = $container.width();
+
         itemsWidth = containerWidth / _items;
         wrapWidth = (itemsWidth  + (options.itemPadding * 2)) * itemsCount;
 
@@ -160,13 +159,6 @@
         setTimeout(function() {
           $wrap[0].style[transitionDuration] = '';
         }, 10);
-      }
-
-      function hasNav() {
-
-        if(itemsCount <= options.items) {
-          $arrows.hide();
-        }
 
       }
 
@@ -208,9 +200,7 @@
 
       function navigation() {
 
-        var $target = $(this);
-
-        if($target.hasClass('wd-carusel__nav--left')) {
+        if($(this).hasClass('wd-carusel__nav--left')) {
           slideTo('prev');
         } else {
           slideTo('next');
@@ -218,6 +208,9 @@
 
       }
 
+      // Bind events
+      $(window).on('resize.' + PLUGINNAME, responsive);
+      $arrows.on('click.' + PLUGINNAME, navigation);
 
 
     });
