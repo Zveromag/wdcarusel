@@ -51,6 +51,7 @@
       autoplayDelay : 3000,
       stopInHover : false,
       containerNav : '',
+      itemsCount : '',
       responsive : [
         {
           breakpoint: 1170,
@@ -94,7 +95,7 @@
       $wrap = $container.find('.wd-carusel__wrap');
 
       //inner arrows
-      if(options.containerNav.trim() !== '' && typeof options.containerNav === 'string') {
+      if(typeof options.containerNav === 'string' && options.containerNav.trim() !== '') {
         options.containerNav = $(options.containerNav);
       }
       else {
@@ -132,7 +133,7 @@
         for(var i = 0; options.responsive.length > i; i++) {
 
           if(containerWidth >= options.responsive[i].breakpoint) {
-            _items = options.responsive[i].items;
+            _items = (options.itemsCount !== '')? options.itemsCount : options.responsive[i].items;
             dimensions();
             break;
           }
@@ -218,3 +219,11 @@
    }
 
  })(jQuery);
+
+$('.wd-carusel').WDCarusel({
+  infinite : true,
+  autoplay : true,
+  autoplayDelay : 3000,
+  stopInHover : true,
+  itemsCount: 5,
+});
